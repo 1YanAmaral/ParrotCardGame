@@ -20,20 +20,13 @@ body {
 }
 
 .container {
-    width: 100%;
+    width: 1000px;
     display: flex;
     flex-wrap: wrap;
     margin: 47px auto;
 
 }
 
-.cards {
-    background-color: red;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
-}
 
 .card {
     height: 146px;
@@ -55,6 +48,7 @@ body {
 
 @media (max-width: 935px) {
     .container {
+        width: 100%;
         flex-direction: column;
         margin: auto 50%;
     }
