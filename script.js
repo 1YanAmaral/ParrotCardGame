@@ -10,7 +10,9 @@ if(cards%2 !== 0 || cards < 4 || cards > 14) {
 
 
 
-let cardList = [];
+let cardList = ['bobrossparrot.gif', 'explodyparrot.gif', 'fiestaparrot.gif', 'metalparrot.gif', 'revertitparrot.gif', 'tripletsparrot.gif', 'unicornparrot.gif'];
+cardList.sort(comparador);
+
 
 
 for (let i = 0; i < cards; i++) {
@@ -20,7 +22,7 @@ for (let i = 0; i < cards; i++) {
           <img src="imgs/front.png" alt="">
         </div>
         <div class="back-face face">
-          <img src="imgs/metalparrot.gif" alt="">
+          <img src="imgs/${cardList[i]}" alt="">
         </div>
     </div>`;
     }
@@ -30,4 +32,7 @@ for (let i = 0; i < cards; i++) {
 function select (element) {
   element.classList.toggle("flip");
 }
-   
+
+function comparador() { 
+	return Math.random() - 0.5; 
+}
