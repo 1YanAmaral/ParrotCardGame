@@ -28,10 +28,13 @@ for (let i = 0; i < cards/2; i++) {
 }
 
 
-document.querySelector(".container").innerHTML = cardsPlaying;
+document.querySelector(".container").innerHTML = cardsPlaying.join(' ');
 
 let compare = [];
 let lastSelected;
+let playCount = 0;
+let gameOver = 0;
+let array = [];
 
 function lastElement(element) {
   lastSelected = element;
@@ -41,6 +44,7 @@ function select (element) {
   element.classList.add("flip");
   let item = element.querySelector(".back-face").innerHTML;
   compare.push(item);
+  playCount++;
   if(compare.length > 1) {
     if(compare[0] !== compare[1]) {
       alert('nope');
@@ -51,6 +55,11 @@ function select (element) {
       compare = [];
     }
   }
+  array = Array.from(document.querySelectorAll(".flip"));
+  console.log(array.length);
+  if (array.length === cardsPlaying.length) {
+    alert(`Você ganhou em ${playCount} jogadas!`);
+  } 
 }
 
 
