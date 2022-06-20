@@ -43,30 +43,22 @@ function removeFlip(element) {
   element.classList.remove("flip");
 }
 
-function removeClick(element) {
-  element.removeAttribute("onclick");
-}
-
-function addClick(element) {
-  element.setAttribute("onclick", "select(this); lastElement(this)");
-}
-
 function select (element) {
   element.classList.add("flip");
   let item = element.querySelector(".back-face").innerHTML;
   compare.push(item);
+  console.log(compare.length);
   playCount++;
-  if(compare.length > 1) {
-    
+  if(compare.length > 1) {        
     if(compare[0] !== compare[1]) {
       setTimeout(removeFlip, 1000, element);
       setTimeout(removeFlip, 1000, lastSelected);
-      compare = [];
+      compare = [];      
     } else {
       compare = [];
-    }
-    
+    }    
   }
+  
   cardsFlipped = Array.from(document.querySelectorAll(".flip"));
   if (cardsFlipped.length === cardsPlaying.length) {
     setTimeout(alert, 300, `Você ganhou em ${playCount} jogadas em ${min} minutos e ${sec} segundos!`);  
@@ -77,13 +69,18 @@ function select (element) {
 } 
 
 
+
+
 function playAgain() {
   let choice = prompt("Quer jogar de novo? Responda com sim ou não:");
   if (choice === "sim") {
     document.location.reload(true);
-  } else {
+  } else if (choice === "não") {
     alert("Obrigado por jogar!");
     clearInterval(idInterval);
+  } else {
+    alert("Responda com sim ou não!");
+    playAgain();
   }
 }
 
